@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(90deg, rgba(125, 122, 199, 0.473), rgb(160, 160, 234));
+}
+
+.container {
+    margin: 20px 10px; /* Ajusta el margen para dispositivos móviles */
+    overflow-x: auto; /* Agrega desplazamiento horizontal para tablas grandes */
+}
+
+.btn-tambah {
+    background-color: lightblue;
+    color: black;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .25);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+}
+
+.btn-tambah::after {
+    content: '\002B';
+    text-align: center;
+    line-height: 20px;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    left: 10px;
+    z-index: 999;
+    opacity: 0;
+    transition: .5s;
+    font-weight: bold;
+}
+
+.btn-tambah:hover.btn-tambah::after {
+    opacity: 1;
+}
+
+.tabel {
+    width: 100%; /* Hace que la tabla sea completamente ancha para pantallas pequeñas */
+    margin: 40px auto;
+    border-collapse: collapse;
+    text-align: center;
+    box-shadow: 0 0 30px 10px rgba(0, 0, 0, .15);
+    border-radius: 10px; /* Reducir el radio para que se vea mejor en dispositivos móviles */
+    overflow-x: auto; /* Agrega desplazamiento horizontal para tablas grandes */
+}
+
+.tabel thead tr {
+    background-color: steelblue;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+}
+
+.tabel tbody td, .tabel thead td {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.tabel thead td {
+    font-weight: bold;
+    font-size: 1.5rem; /* Reducir el tamaño de fuente para pantallas pequeñas */
+}
+
+.tabel tbody tr:nth-child(even) {
+    background-color: white;
+}
+
+.tabel tbody tr:nth-child(odd) {
+    background-color: lightgray;
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination {
+    list-style: none;
+    padding: 0;
+}
+
+.pagination li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.pagination a {
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.pagination a.active {
+    background-color: #555;
+}
