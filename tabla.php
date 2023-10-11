@@ -1,4 +1,5 @@
 <?php
+
 require_once 'conexion/conexion.php';
 
 $filasPorPagina = 10; // Número de filas por página
@@ -20,12 +21,6 @@ $statement = $conexion->prepare("SELECT regisalones.id, regisalones.estado, regi
 $statement->execute();
 $resultados = $statement->fetchAll();
 
-// Devolver los resultados como JSON
-// echo json_encode($resultados);
-
 require_once 'views/tabla.view.php';
-
-//Recargar pagina cada 5 segundos
-header("Refresh:5; url=tabla.php");
 
 ?>

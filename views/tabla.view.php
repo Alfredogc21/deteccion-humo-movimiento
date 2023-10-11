@@ -40,23 +40,24 @@
         <!-- Mostrar la paginación -->
         <div class="pagination-container">
             <ul class="pagination">
+                <li><a href="?pagina=1">Primera</a></li>
                 <?php
                 // Número de páginas a mostrar antes y después de la página actual
                 $numPaginasMostradas = 3;
+
 
                 for ($i = max(1, $paginaActual - $numPaginasMostradas); $i <= min($totalPaginas, $paginaActual + $numPaginasMostradas); $i++) {
                     $activeClass = ($i == $paginaActual) ? 'active' : '';
                     echo '<li><a href="?pagina=' . $i . '" class="' . $activeClass . '">' . $i . '</a></li>';
                 }
                 ?>
+                <li><a href="?pagina=<?php echo $totalPaginas; ?>">Última</a></li>
             </ul>
         </div>
     </div>
-    <!-- Agrega jQuery a tu página si aún no está incluido -->
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 
-    <!-- Incluye tu archivo JavaScript externo -->
-    <!-- <script src="js/javascript.js"></script> -->
+    <!-- Recargar Pagina -->
+    <script src="js/recargarTablas.js"></script>
 </body>
 
 </html>

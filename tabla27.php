@@ -1,4 +1,5 @@
 <?php
+
 require_once 'conexion/conexion.php';
 
 $filasPorPagina = 10; // Número de filas por página
@@ -28,8 +29,5 @@ $resultadoMovimiento = $consultarMovimiento->fetchAll();
 $movimiento = $resultadoMovimiento[0]['estado'];
 
 require_once 'views/tabla.view27.php';
-
-//Recargar pagina cada 5 segundos
-header("Refresh:5; url=tabla27.php");
 
 ?>

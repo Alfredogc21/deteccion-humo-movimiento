@@ -8,10 +8,6 @@ $resultadoMovimiento = $consultarMovimiento->fetchAll();
 
 $movimiento = $resultadoMovimiento[0]['estado'];
 
-
 require_once 'views/pasillo1.view.php';
-
-//Recargar pagina cada 5 segundos
-header("Refresh:5; url=pasillo2.php");
 
 ?>

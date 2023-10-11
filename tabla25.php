@@ -1,4 +1,5 @@
 <?php
+
 require_once 'conexion/conexion.php';
 
 $filasPorPagina = 10; // Número de filas por página
@@ -21,8 +22,5 @@ $statement->execute();
 $resultados = $statement->fetchAll();
 
 require_once 'views/tabla.view25.php';
-
-//Recargar pagina cada 5 segundos
-header("Refresh:5; url=tabla25.php");
 
 ?>

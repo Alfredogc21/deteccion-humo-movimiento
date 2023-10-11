@@ -1,9 +1,10 @@
 <?php
+
 require_once 'conexion/conexion.php';
 
 $filasPorPagina = 10; // Número de filas por página
 
-$statement = $conexion->prepare("SELECT COUNT(*) as total FROM regisalones");
+$statement = $conexion->prepare("SELECT COUNT(*) as total FROM regisalones WHERE salones_id = 32");
 $statement->execute();
 $totalFilas = $statement->fetch()['total'];
 
@@ -28,8 +29,5 @@ $resultadoMovimiento = $consultarMovimiento->fetchAll();
 $movimiento = $resultadoMovimiento[0]['estado'];
 
 require_once 'views/tabla.view32.php';
-
-//Recargar pagina cada 5 segundos
-header("Refresh:5; url=tabla32.php");
 
 ?>

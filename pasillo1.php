@@ -14,10 +14,6 @@ $resultadoPasillo = $consultarPasillo->fetchAll();
 $humoPasillo = $resultadoPasillo[0]['estado'];
 $movimiento = $resultadoMovimiento[0]['estado'];
 
-
 require_once 'views/pasillo1.view.php';
-
-//Recargar pagina cada 5 segundos
-header("Refresh:5; url=pasillo1.php");
 
 ?>

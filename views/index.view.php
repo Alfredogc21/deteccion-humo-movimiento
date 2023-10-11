@@ -21,13 +21,13 @@
         <div class="contenedor__card contenedor__bano2 success">
             <h3>Baños 2</h3>
         </div>
-        <a href="tabla25.php" class="contenedor__card contenedor__salon1 <?php echo ($movimientoSalon1['estado'] == 1) ? 'danger' : 'success'; ?>">Salon 1</a>
-        <a href="tabla26.php" class="contenedor__card contenedor__salon2 <?php echo ($movimientoSalon2['estado'] == 1) ? 'danger' : 'success'; ?>">Salon 2</a>
-        <a href="tabla27.php" class="contenedor__card contenedor__salon3 <?php echo ($movimientoSalon3['estado'] == 1) ? 'danger' : 'success'; ?>">Salon 3</a>
-        <a href="tabla32.php" class="contenedor__card contenedor__salon4 <?php echo ($movimientoSalon4['estado'] == 1) ? 'danger' : 'success'; ?>">Salon 4</a>
+        <a href="tabla32.php" class="contenedor__card contenedor__salon1 <?php echo ($movimientoSalon1['estado'] == 1) ? 'danger' : 'success'; ?>">Salon 1</a>
+        <a href="tabla34.php" class="contenedor__card contenedor__salon2 <?php echo ($movimientoSalon2['estado'] == 1) ? 'danger' : 'success'; ?>">Salon 2</a>
+        <a href="tabla35.php" class="contenedor__card contenedor__salon3 <?php echo ($movimientoSalon3['estado'] == 1) ? 'danger' : 'success'; ?>">Salon 3</a>
+        <a href="tabla#.php" class="contenedor__card contenedor__salon4 <?php echo ($movimientoSalon4['estado'] == 1) ? 'danger' : 'success'; ?>">Salon 4</a>
 
-        <a href="pasillo1.php" class="contenedor__card contenedor__pasillo1 <?php echo ($movimiento == 1 || $humoPasillo == 1) ? 'danger' : 'success'; ?>">Pasillo 1</a>
-        <a href="pasillo2.php" class="contenedor__card contenedor__pasillo2 <?php echo ($movimiento == 1 || $humoPasillo == 1) ? 'danger' : 'success'; ?>">Pasillo 2</a>
+        <a href="pasillo1.php" class="contenedor__card contenedor__pasillo1 <?php echo ($movimientoPasillo1['estado'] == 1 || $padilloHumo1['estado']  == 1) ? 'danger' : 'success'; ?>">Pasillo 1</a>
+        <a href="pasillo2.php" class="contenedor__card contenedor__pasillo2 <?php echo ($movimientoPasillo2['estado'] == 1 || $padilloHumo2['estado'] == 1) ? 'danger' : 'success'; ?>">Pasillo 2</a>
 
         <div class="contenedor__consultodo">
             <a href="tabla.php" class="contenedor__consultar">Consultar todo <i class="fa-solid fa-magnifying-glass"></i></a>
@@ -40,13 +40,10 @@
             <h1>Ultimo registro de humo: pasillo 2 hace <?php echo $diaEstimado . ' dias'; ?> (<?php echo $ultimoMovimiento; ?>)</h1>
             <hr>
         </div>
-
     </section>
-    <!-- Agrega jQuery a tu página si aún no está incluido -->
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 
-    <!-- Incluye tu archivo JavaScript externo -->
-    <!-- <script src="js/javascript.js"></script> -->
+    <!-- Recargar Pagina -->
+    <script src="js/recarga.js"></script>
     <!-- Links iconos font-awesome -->
     <script src="https://kit.fontawesome.com/3f592185f1.js" crossorigin="anonymous"></script>
 </body>
