@@ -36,10 +36,8 @@ $ultimoMovimiento = $movimientoSalon1['fecha'];
 $fechaActual = date("Y-m-d");
 $diaEstimado = calcularDiferenciaDias($fechaActual, $ultimoMovimiento);
 
-print_r($ultimoMovimiento);
-
 require_once 'views/index.view.php';
 
-// Recargar la página cada 5 segundos
-header("Refresh:5; url=index.php");
+// Recargar la página cada 3 segundos
+header("Refresh:3; url=index.php");
 ?>
