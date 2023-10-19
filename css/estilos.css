@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-image: linear-gradient(90deg, rgba(125, 122, 199, 0.473), rgb(160, 160, 234));
+    background-image: linear-gradient(90deg, steelblue, rgb(160, 160, 234));
 }
 
 .titulo, .contenedor__alerta {
@@ -81,9 +81,11 @@ body {
 .contenedor__bano1, .contenedor__bano2 {
     background-position: center;
     background-size: 70px;
+    background-repeat: no-repeat;
     line-height: 180px;
     font-size: 10px;
     color: #fff;
+    background-color: #004F86;
 }
 
 .contenedor__bano1 {

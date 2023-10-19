@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar datos</title>
+    <link rel="stylesheet" href="css/tabla.css">
+    <link rel="icon" href="../imagenes/favicon.png">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Consultar datos</h1>
+        <div class="tbcover">
+            <a href="index.html" class="btn-tambah">Regresar</a>
+        </div>
+        <label for="tipoDatos">Seleccione el tipo de datos:</label>
+        <select class="seleccionar" id="tipoDatos">
+            <option value="registromovi">Registros de Salones</option>
+            <option value="registrohumo">Registros de Pasillos</option>
+        </select>
+        <table class="tabel">
+            <thead>
+                <td>Id</td>
+                <td>Nombre</td>
+                <td>Estado</td>
+                <td>Fecha</td>
+                <td>MAC</td>
+            </thead>
+            <tbody id="tablaRegistros">
+                <!-- Aquí se cargarán los datos -->
+            </tbody>
+        </table>
+        <!-- Mostrar la paginación -->
+        <!-- <div class="pagination-container">
+            <ul class="pagination" id="pagination">
+                <li><a href="#" data-page="1">Primera</a></li>
+            </ul>
+        </div> -->
+        <div id="pagination">
+            <button class="botones" id="prevPage">Anterior</button>
+            <button class="botones" id="nextPage">Siguiente</button>
+        </div>   
+        
+        
+    </div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/ajaxtg.js"></script>
+</body>
+
+</html>
