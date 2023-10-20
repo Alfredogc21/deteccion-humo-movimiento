@@ -20,15 +20,6 @@ $(document).ready(function () {
                         humoPasillo2: data.humoPasillo2.estado
                     };
 
-                    // $.each(data, function (key, value) {
-                    //     var elemento = $('.contenedor__' + key);
-                    //     if (value.estado === 1) {
-                    //         elemento.removeClass('success').addClass('danger');
-                    //     } else {
-                    //         elemento.removeClass('danger').addClass('success');
-                    //     }
-                    // });
-
                     // Recorre los datos y actualiza las clases de acuerdo al estado
                     $.each(data, function (key, value) {
                         var elemento = $('.contenedor__' + key);
@@ -56,9 +47,8 @@ $(document).ready(function () {
                         }
                     });
 
-
                     // Actualizar la página con los estados
-                    actualizarEstados(estados);
+                    actualizarEstados(estados, data);
                     // Actualizar la información de los salones y pasillos
                     actualizarInfoSalonPasillos(data);
                 } else {
@@ -71,7 +61,7 @@ $(document).ready(function () {
         });
     }
 
-    // Obtener la información del último movimiento de los salones, pasillos y ultima detección de humo en los pasillos
+    // Obtener la información del último movimiento de los salones, pasillos y última detección de humo en los pasillos
     function actualizarInfoSalonPasillos(data) {
         var infoSalonMovimiento = obtenerInfoSalon(data, 'salon');
         var infoPasilloMovimiento = obtenerInfoSalon(data, 'pasillo');
@@ -128,7 +118,7 @@ $(document).ready(function () {
         return 'Último registro de movimiento en ' + tipo + ': ' + ultimoSalon + ' hace ' + diferencia + ' ' + unidad + ' (' + fechaFormateada + ')';
     }
 
-    function actualizarEstados(estados) {
+    function actualizarEstados(estados, data) {
         // Aquí puedes actualizar la página con los estados según tus necesidades
         console.log('Estado de Salon 1:', estados.salon1);
         console.log('Estado de Salon 2:', estados.salon2);
