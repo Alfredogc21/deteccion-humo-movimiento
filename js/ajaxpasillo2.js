@@ -16,7 +16,7 @@ $(document).ready(function () {
                     console.log('Estado de humo del pasillo:', estadohumoPasillo);
                     console.log('Estado de movimiento del pasillo:', estadomovimientopasillo);
 
-                    if (parseInt(estadohumoPasillo) === 1) {
+                    if (parseInt(estadohumoPasillo) > 1000) {
                         elementoHumo.removeClass('success').addClass('danger');
                     } else {
                         elementoHumo.removeClass('danger').addClass('success');

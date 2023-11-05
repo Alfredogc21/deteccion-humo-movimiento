@@ -2,12 +2,12 @@
 require_once '../conexion/conexion.php';
 
 //Saber si el movimiento es 0 o 1 para asignar color
-$consultarMovimiento = $conexion->prepare("SELECT * FROM registromovi WHERE salones_id = 27 ORDER BY id DESC LIMIT 1");
+$consultarMovimiento = $conexion->prepare("SELECT * FROM registromovi WHERE sensormovi_id = 25 ORDER BY id DESC LIMIT 1");
 $consultarMovimiento->execute();
 $resultadoMovimiento = $consultarMovimiento->fetchAll();
 
 //Saber si el sensor de humo esta en 0 o 1
-$consultarPasillo = $conexion->prepare("SELECT * FROM registrohumo ORDER BY id DESC LIMIT 1");
+$consultarPasillo = $conexion->prepare("SELECT * FROM registrohumo WHERE sensorhumo_id = 15 ORDER BY id DESC LIMIT 1");
 $consultarPasillo->execute();
 $resultadoPasillo = $consultarPasillo->fetchAll();
 
