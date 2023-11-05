@@ -1,10 +1,9 @@
 $(document).ready(function () {
     function cargarEstados() {
         $.ajax({
-            url: 'php/get_movimiHumo.php',
+            url: 'php/get_MovimiHumo.php',
             type: 'GET',
             headers: new Headers({ 'Content-type': 'application/json' }),
-            mode: 'no-cors',
             dataType: 'json',
             success: function (data) {
                 if (data) {
@@ -16,8 +15,8 @@ $(document).ready(function () {
                         salon4: data.salon4.estado,
                         pasillo1: data.pasillo1.estado,
                         pasillo2: data.pasillo2.estado,
-                        humoPasillo1: data.humoPasillo1.estado,
-                        humoPasillo2: data.humoPasillo2.estado
+                        humoPasillo1: data.pasillo1humo.estado,
+                        humoPasillo2: data.pasillo2humo.estado
                     };
 
                     // Recorre los datos y actualiza las clases de acuerdo al estado
@@ -25,24 +24,31 @@ $(document).ready(function () {
                         var elemento = $('.contenedor__' + key);
                         var estado = parseInt(value.estado); // Convertir a entero
 
-                        if (key.startsWith('pasillo')) {
-                            var humoKey = 'humo' + key;
-                            var humoEstado = data[humoKey] ? parseInt(data[humoKey].estado) : 0; // Convertir a entero o establecer en 0
-
-                            if (estado === 1 || humoEstado === 1) {
+                        if (key.startsWith('pasillo1humo') || key.startsWith('pasillo1')) {
+                            if (estado > 1000 || parseInt(data.pasillo1.estado) === 1) {
                                 elemento.removeClass('success').addClass('danger');
-                                console.log('Hay humo en el pasillo ' + key);
+                                console.log('Hay humo o movimiento en el ' + key);
                             } else {
                                 elemento.removeClass('danger').addClass('success');
-                                console.log('No hay humo en el pasillo ' + key);
+                                console.log('No hay humo ni movimiento en el ' + key);
                             }
+
+                        } else if (key.startsWith('pasillo2humo') || key.startsWith('pasillo2')) {
+                            if (estado > 1000 || parseInt(data.pasillo2.estado) === 1) {
+                                elemento.removeClass('success').addClass('danger');
+                                console.log('Hay humo o movimiento en el ' + key);
+                            } else {
+                                elemento.removeClass('danger').addClass('success');
+                                console.log('No hay humo ni movimiento en el ' + key);
+                            }
+
                         } else {
                             if (estado === 1) {
                                 elemento.removeClass('success').addClass('danger');
-                                console.log('Hay movimiento en el salón ' + key);
+                                console.log('Hay movimiento en el ' + key);
                             } else {
                                 elemento.removeClass('danger').addClass('success');
-                                console.log('No hay movimiento en el salón ' + key);
+                                console.log('No hay movimiento en el ' + key);
                             }
                         }
                     });
@@ -65,11 +71,13 @@ $(document).ready(function () {
     function actualizarInfoSalonPasillos(data) {
         var infoSalonMovimiento = obtenerInfoSalon(data, 'salon');
         var infoPasilloMovimiento = obtenerInfoSalon(data, 'pasillo');
-        var infoPasilloHumo = obtenerInfoSalon(data, 'humo');
+        var infoPasilloHumo = obtenerInfoSalon(data, 'pasillo1humo');
+        var infoPasilloHumo2 = obtenerInfoSalon(data, 'pasillo2humo');
 
         $('#salonmovimiento').text(infoSalonMovimiento);
         $('#pasillomovimiento').text(infoPasilloMovimiento);
-        $('#pasillohumo').text(infoPasilloHumo);
+        $('#pasillohumo1').text(infoPasilloHumo);
+        $('#pasillohumo2').text(infoPasilloHumo2);
     }
 
     function obtenerInfoSalon(data, tipo) {
@@ -115,11 +123,27 @@ $(document).ready(function () {
             hour12: true
         });
 
-        return 'Último registro de movimiento en ' + tipo + ': ' + ultimoSalon + ' hace ' + diferencia + ' ' + unidad + ' (' + fechaFormateada + ')';
+        //Renombrar los salones y pasillos
+        if (tipo === 'pasillo1humo') {
+            tipo = 'de humo en el pasillo 1:';
+            ultimoSalon = '';
+        } else if (tipo === 'pasillo2humo') {
+            tipo = 'de humo en el pasillo 2: ';
+            ultimoSalon = '';
+        } else if (tipo === 'salon') {
+            tipo = 'de movimiento en el ';
+        } else if (tipo === 'pasillo') {
+            tipo = 'de movimiento en el ';
+            ultimoSalon = ultimoSalon.slice(0, -4); // Elimina el número del pasillo
+            ultimoSalon = ultimoSalon.slice(0, 7) + " " + ultimoSalon.slice(7) // Agrega un espacio entre pasillo y el número
+        }
+
+        return 'Último registro ' + tipo + ultimoSalon + ' hace ' + diferencia + ' ' + unidad + ' (' + fechaFormateada + ')';
+
     }
 
     function actualizarEstados(estados, data) {
-        // Aquí puedes actualizar la página con los estados según tus necesidades
+        // Mostar los estados en la consola
         console.log('Estado de Salon 1:', estados.salon1);
         console.log('Estado de Salon 2:', estados.salon2);
         console.log('Estado de Salon 3:', estados.salon3);
@@ -129,7 +153,7 @@ $(document).ready(function () {
         console.log('Estado de Humo Pasillo 1:', estados.humoPasillo1);
         console.log('Estado de Humo Pasillo 2:', estados.humoPasillo2);
         console.log(data);
-        // Puedes actualizar la página o realizar otras acciones con los estados aquí
+        
     }
 
     // Llamar a la función para cargar los estados inicialmente
