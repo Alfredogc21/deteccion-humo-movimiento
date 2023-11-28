@@ -23,14 +23,14 @@ function obtenerUltimoEstadoHumo($sensorHumo) {
 }
 
 // Crear un arreglo para almacenar los datos
-$salon1Data = obtenerUltimoMovimiento(32); //Salon1: movimiento 32
+$salon1Data = obtenerUltimoMovimiento(18); //Salon1: movimiento 18
 $salon2Data = obtenerUltimoMovimiento(35); //Salon2: movimiento 35
 $salon3Data = obtenerUltimoMovimiento(26); //Salon3: movimiento 26
 $salon4Data = obtenerUltimoMovimiento(27); //Salon4: movimiento 27
 $pasillo1Data = obtenerUltimoMovimiento(33); //Pasillo1: movimiento 33
 $pasillo2Data = obtenerUltimoMovimiento(25); //Pasillo2: movimiento 25
 $humoPasillo1 = obtenerUltimoEstadoHumo(34); //Pasillo1: 34 el de humo
-$humoPasillo2 = obtenerUltimoEstadoHumo(15); //Pasillo2: 15 el de humo
+$humoPasillo2 = obtenerUltimoEstadoHumo(32); //Pasillo2: 32 el de humo
 
 // Combinar los datos en un arreglo
 $data = array(

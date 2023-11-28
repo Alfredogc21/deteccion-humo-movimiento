@@ -25,9 +25,9 @@ $fin = isset($_GET['fin']) ? $_GET['fin'] : 10; // Índice de fin
 
 // SQL (regisalones o regispasillos)
 if ($tipo === 'registromovi') {
-    $query = "SELECT registromovi.id, registromovi.estado, registromovi.fecha, registromovi.mac, sensormovi.nombre_salones AS sensormovi FROM registromovi INNER JOIN sensormovi ON sensormovi.id = registromovi.salones_id ORDER BY id DESC LIMIT $inicio, $fin";
+    $query = "SELECT registromovi.id, registromovi.estado, registromovi.fecha, registromovi.mac, sensormovi.nombre_salones AS sensormovi FROM registromovi INNER JOIN sensormovi ON sensormovi.id = registromovi.sensormovi_id  ORDER BY id DESC LIMIT $inicio, $fin";
 } elseif ($tipo === 'registrohumo') {
-    $query = "SELECT registrohumo.id, registrohumo.estado, registrohumo.fecha, registrohumo.mac, sensorhumo.nombre_pasillos AS sensorhumo FROM registrohumo INNER JOIN sensorhumo ON sensorhumo.id = registrohumo.pasillos_id ORDER BY id DESC LIMIT $inicio, $fin";
+    $query = "SELECT registrohumo.id, registrohumo.estado, registrohumo.fecha, registrohumo.mac, sensorhumo.nombre_pasillos AS sensorhumo FROM registrohumo INNER JOIN sensorhumo ON sensorhumo.id = registrohumo.sensorhumo_id ORDER BY id DESC LIMIT $inicio, $fin";
 }
 
 $statement = $conexion->prepare($query);
