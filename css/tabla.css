@@ -112,6 +112,24 @@ body {
     color: white;
 }
 
+.contenedor {
+    width: 90%;
+    margin: 0 auto 50px;
+    padding: 10px 0 50px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.contenedor__estadistica {
+    width: 60%;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #e9e9e9;
+    border-radius: 10px;
+    text-align: center;
+}
+
 /* Grafica */
 .contenedor__grafico {
     width: 95%;
