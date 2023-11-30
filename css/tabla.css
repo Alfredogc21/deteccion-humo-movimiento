@@ -10,18 +10,8 @@ body {
 }
 
 .container {
-    margin: 20px 10px; /* Ajusta el margen para dispositivos móviles */
-    overflow-x: auto; /* Agrega desplazamiento horizontal para tablas grandes */
-}
-
-.btn-tambah {
-    background-color: lightblue;
-    color: black;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, .25);
-    text-decoration: none;
-    display: inline-block;
-    margin-bottom: 10px;
-    padding: 10px 20px;
+    overflow-x: auto;
+    /* Agrega desplazamiento horizontal para tablas grandes */
 }
 
 .btn-tambah::after {
@@ -38,6 +28,29 @@ body {
     font-weight: bold;
 }
 
+.titulo1 {
+    text-align: center;
+    font-size: 2rem;
+    margin: 20px 0;
+}
+
+.btn-tambah {
+    width: 10%;
+    background-color: rgba(220, 20, 60, 0.774);
+    color: white;
+    font-size: 20px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .25);
+    text-decoration: none;
+    display: block;
+    margin: 10px auto 10px;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.btn-tambah:hover {
+    background-color: crimson;
+}
+
 .btn-tambah:hover.btn-tambah::after {
     opacity: 1;
 }
@@ -52,13 +65,16 @@ body {
 }
 
 .tabel {
-    width: 100%; /* Hace que la tabla sea completamente ancha para pantallas pequeñas */
+    width: 100%;
+    /* Hace que la tabla sea completamente ancha para pantallas pequeñas */
     margin: 40px auto;
     border-collapse: collapse;
     text-align: center;
     box-shadow: 0 0 30px 10px rgba(0, 0, 0, .15);
-    border-radius: 10px; /* Reducir el radio para que se vea mejor en dispositivos móviles */
-    overflow-x: auto; /* Agrega desplazamiento horizontal para tablas grandes */
+    border-radius: 10px;
+    /* Reducir el radio para que se vea mejor en dispositivos móviles */
+    overflow-x: auto;
+    /* Agrega desplazamiento horizontal para tablas grandes */
 }
 
 .tabel thead tr {
@@ -68,14 +84,16 @@ body {
     padding: 10px;
 }
 
-.tabel tbody td, .tabel thead td {
+.tabel tbody td,
+.tabel thead td {
     border: 1px solid #ccc;
     padding: 10px;
 }
 
 .tabel thead td {
     font-weight: bold;
-    font-size: 1.5rem; /* Reducir el tamaño de fuente para pantallas pequeñas */
+    font-size: 1.5rem;
+    /* Reducir el tamaño de fuente para pantallas pequeñas */
 }
 
 .tabel tbody tr:nth-child(even) {
@@ -135,13 +153,33 @@ body {
     width: 95%;
     height: 200px;
     margin: 150px auto 650px;
-  }
-  
-  .contenedor__grafico1, .contenedor__grafico2 {
+}
+
+.contenedor__grafico1,
+.contenedor__grafico2 {
     display: inline-block;
     width: 45%;
     margin-left: 20px;
     margin-top: 50px;
-    box-shadow: 0px 0px 55px 1px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 55px 1px rgba(0, 0, 0, 0.5);
     background-color: #ffffff;
-  }
+}
+
+@media (max-width: 1025px) {
+    .btn-tambah {
+        width: 30%;
+    }
+}
+
+@media (max-width: 500px) {
+    .btn-tambah {
+        width: 35%;
+    }
+}
+
+@media (max-width: 281px) {
+    .btn-tambah {
+        width: 45%;
+    }
+}
+

@@ -28,7 +28,7 @@ $(document).ready(function () {
                             '<tr>' +
                             '<td>' + registro.id + '</td>' +
                             '<td>' + registro.salones + '</td>' +
-                            '<td>' + registro.estado + '</td>' +
+                            '<td>' + (parseInt(registro.estado) === 1 ? 'Encendido' : 'Apagado') + '</td>' +
                             '<td>' + registro.fecha + '</td>' +
                             '<td>' + registro.mac + '</td>' +
                             '</tr>'

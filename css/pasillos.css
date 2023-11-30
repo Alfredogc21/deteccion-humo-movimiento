@@ -10,18 +10,30 @@ body {
 }
 
 .container {
-    margin: 20px 10px; /* Ajusta el margen para dispositivos móviles */
     overflow-x: auto; /* Agrega desplazamiento horizontal para tablas grandes */
 }
 
+.titulo1 {
+    text-align: center;
+    font-size: 2rem;
+    margin: 20px 0;
+}
+
 .btn-tambah {
-    background-color: lightblue;
-    color: black;
+    width: 10%;
+    background-color: rgba(220, 20, 60, 0.774);
+    color: white;
+    font-size: 20px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, .25);
     text-decoration: none;
-    display: inline-block;
-    margin-bottom: 10px;
+    display: block;
+    margin: 10px auto 10px;
     padding: 10px 20px;
+    text-align: center;
+}
+
+.btn-tambah:hover {
+    background-color: crimson;
 }
 
 .btn-tambah::after {
@@ -70,14 +82,30 @@ body {
     background-color: crimson;
 }
 
+@media (max-width: 1025px) {
+    .btn-tambah {
+        width: 30%;
+    }
+}
+
 @media (max-width: 900px) {
     .contenedor__pasillo {
         font-size: 1.2rem;
+    }
+
+    .btn-tambah {
+        width: 35%;
     }
 }
 
 @media (max-width: 500px) {
     .contenedor__pasillo {
         font-size: 1rem;
+    }
+}
+
+@media (max-width: 281px) {
+    .btn-tambah {
+        width: 45%;
     }
 }
