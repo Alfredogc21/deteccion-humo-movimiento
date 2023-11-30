@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registros</title>
+    <link rel="stylesheet" href="css/tabla.css">
+    <link rel="icon" href="../imagenes/favicon.png">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Registros del salon 1</h1>
+        <div class="tbcover">
+            <a href="index.html" class="btn-tambah">Regresar</a>
+        </div>
+        <table class="tabel">
+            <thead>
+                <td>Id</td>
+                <td>Salones</td>
+                <td>Estado</td>
+                <td>fecha</td>
+                <td>mac</td>
+            </thead>
+            <tbody id="tablaRegistros">
+                <!-- Aquí se mostrarán los datos cargados a través de Ajax -->
+            </tbody>
+        </table>
+    </div>
+
+    <section class="contenedor">
+        <h2 class="contenedor__estadistica">Estadisticas</h2>
+
+        <div class="contenedor__grafico1">
+            <canvas class="graficosPosicion" id="myChart" width="400" height="400"></canvas>
+        </div>
+        <div class="contenedor__grafico2">
+            <canvas class="graficosPosicion" id="myChart2" width="400" height="400"></canvas>
+        </div>
+    </section>
+
+
+    <!-- Agrega jQuery a tu página si aún no está incluido -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Incluye tu archivo JavaScript externo -->
+    <script src="js/ajaxtm18.js"></script>
+    <!-- Libreria de graficos chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"> </script>
+</body>
+
+</html>
