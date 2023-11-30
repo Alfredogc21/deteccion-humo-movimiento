@@ -6,8 +6,8 @@ $consultarMovimiento = $conexion->prepare("SELECT * FROM registromovi WHERE sens
 $consultarMovimiento->execute();
 $resultadoMovimiento = $consultarMovimiento->fetchAll();
 
-//Saber si el sensor de humo esta en 0 o 1
-$consultarPasillo = $conexion->prepare("SELECT * FROM registrohumo WHERE sensorhumo_id = 15 ORDER BY id DESC LIMIT 1");
+//Saber si el sensor de humo esta mayor o menor a 1000 para asignar color
+$consultarPasillo = $conexion->prepare("SELECT * FROM registrohumo WHERE sensorhumo_id = 32 ORDER BY id DESC LIMIT 1");
 $consultarPasillo->execute();
 $resultadoPasillo = $consultarPasillo->fetchAll();
 
