@@ -3,6 +3,9 @@ $(document).ready(function () {
         $.ajax({
             url: 'php/get_infopasillo2.php', // Reemplaza 'ruta/al/tu_script_php.php' con la ruta correcta a tu script PHP
             type: 'GET',
+            headers: {
+                'Accept': 'application/json', // Configura el encabezado Accept para indicar JSON
+            },
             dataType: 'json',
             success: function (data) {
                 if (data) {
@@ -40,6 +43,6 @@ $(document).ready(function () {
     // Llamar a la función para cargar los estados inicialmente
     cargarEstados();
 
-    // Actualizar la información cada 2 segundos
-    setInterval(cargarEstados, 2000);
+    // Actualizar la información cada 41 segundos
+    setInterval(cargarEstados, 41000);
 });

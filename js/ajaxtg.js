@@ -9,7 +9,9 @@ $(document).ready(function () {
         $.ajax({
             url: `php/get_infotablag.php?tipo=${tipo}&inicio=${inicio}&fin=${fin}`,
             type: 'GET',
-            headers: new Headers({ 'Content-type': 'application/json' }),
+            headers: {
+                'Accept': 'application/json', // Configura el encabezado Accept para indicar JSON
+            },
             mode: 'no-cors',
             dataType: 'json',
             success: function (data) {
@@ -58,29 +60,25 @@ $(document).ready(function () {
         const fin = filasPorPagina; // Calcula el final de la fila
         cargarRegistros($('#tipoDatos').val(), inicio, fin); // Carga los registros actuales
         //Cargar los datos del gráfico
-        actualizarGrafico(data);
     }
 
     // Manejar el evento "click" en los botones de paginación
     $('#prevPage').on('click', function () {
         if (paginaActual > 1) {
             cambiarPagina(paginaActual - 1);
-            actualizarGrafico(data);
         }
     });
 
     $('#nextPage').on('click', function () {
         if (paginaActual < 10) { // Cambia 10 al número de páginas total si es diferente
             cambiarPagina(paginaActual + 1);
-            actualizarGrafico(data);
         }
     });
 
     // Actualizar la información cada 2 segundos
     setInterval(function () {
         cargarRegistros($('#tipoDatos').val(), (paginaActual - 1) * filasPorPagina, filasPorPagina);
-        actualizarGrafico(data);
-    }, 2000);
+    }, 41000);
 });
 
 

@@ -4,14 +4,14 @@ $(document).ready(function () {
     const filasPorPagina = 10;
     let paginaActual = 1;
 
-    let nombres = [];
+    let nombres = []; 
     let datosPorNombre = {};
     let myChart = null;  // Variable para almacenar la referencia al gráfico
     let myChart2 = null;  // Variable para almacenar la referencia al segundo gráfico
 
     function cargarDatos(inicio, fin) {
         $.ajax({
-            url: `php/get_infotablam18.php?inicio=${inicio}&fin=${fin}`,
+            url: `php/get_infotablam26.php?inicio=${inicio}&fin=${fin}`,
             type: 'GET',
             headers: {
                 'Accept': 'application/json', // Configura el encabezado Accept para indicar JSON

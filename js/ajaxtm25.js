@@ -4,14 +4,14 @@ $(document).ready(function () {
     const filasPorPagina = 10;
     let paginaActual = 1;
 
-    let nombres = [];
+    let nombres = []; 
     let datosPorNombre = {};
     let myChart = null;  // Variable para almacenar la referencia al gráfico
     let myChart2 = null;  // Variable para almacenar la referencia al segundo gráfico
 
     function cargarDatos(inicio, fin) {
         $.ajax({
-            url: `php/get_infotablam18.php?inicio=${inicio}&fin=${fin}`,
+            url: `php/get_infotablam25.php?inicio=${inicio}&fin=${fin}`,
             type: 'GET',
             headers: {
                 'Accept': 'application/json', // Configura el encabezado Accept para indicar JSON
@@ -29,7 +29,7 @@ $(document).ready(function () {
                         tablaRegistros.append(
                             '<tr>' +
                             '<td>' + registro.id + '</td>' +
-                            '<td>' + registro.salones + '</td>' +
+                            '<td>' + (parseInt(registro.salones) == 303 ? 'Pasillo 2' : 'nn') + '</td>' +
                             '<td>' + (parseInt(registro.estado) === 1 ? 'Encendido' : 'Apagado') + '</td>' +
                             '<td>' + registro.fecha + '</td>' +
                             '<td>' + registro.mac + '</td>' +

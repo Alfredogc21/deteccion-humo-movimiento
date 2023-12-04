@@ -4,14 +4,14 @@ $(document).ready(function () {
     const filasPorPagina = 10;
     let paginaActual = 1;
 
-    let nombres = [];
+    let nombres = []; 
     let datosPorNombre = {};
     let myChart = null;  // Variable para almacenar la referencia al gráfico
     let myChart2 = null;  // Variable para almacenar la referencia al segundo gráfico
 
     function cargarDatos(inicio, fin) {
         $.ajax({
-            url: `php/get_infotablam18.php?inicio=${inicio}&fin=${fin}`,
+            url: `php/get_infotablah34.php?inicio=${inicio}&fin=${fin}`,
             type: 'GET',
             headers: {
                 'Accept': 'application/json', // Configura el encabezado Accept para indicar JSON
@@ -29,14 +29,14 @@ $(document).ready(function () {
                         tablaRegistros.append(
                             '<tr>' +
                             '<td>' + registro.id + '</td>' +
-                            '<td>' + registro.salones + '</td>' +
-                            '<td>' + (parseInt(registro.estado) === 1 ? 'Encendido' : 'Apagado') + '</td>' +
+                            '<td>' + ((registro.pasillos) == 'Pasillo A' ? 'Pasillo 1' : 'nn') + '</td>' +
+                            '<td>' + registro.estado + '</td>' +
                             '<td>' + registro.fecha + '</td>' +
                             '<td>' + registro.mac + '</td>' +
                             '</tr>'
                         );
 
-                        const nombre = registro.salones;
+                        const nombre = registro.pasillos;
 
                         if (!nombres.includes(nombre)) {
                             nombres.push(nombre);
@@ -85,7 +85,7 @@ $(document).ready(function () {
 
         nombres.forEach(function (nombre) {
             datasets.push({
-                label: `Encendidos (${nombre})`,
+                label: `Valor de: (${nombre})`,
                 data: [datosPorNombre[nombre].encendidos],
                 backgroundColor: 'rgba(236, 47, 230, 0.538)',
                 borderColor: 'rgba(236, 47, 230, 0.538)',
@@ -93,7 +93,7 @@ $(document).ready(function () {
             });
 
             datasets.push({
-                label: `Apagados (${nombre})`,
+                label: `Valor de: (${nombre})`,
                 data: [datosPorNombre[nombre].apagados],
                 backgroundColor: 'rgba(255, 166, 0, 0.577)',
                 borderColor: 'rgba(255, 166, 0, 0.577)',
@@ -130,7 +130,7 @@ $(document).ready(function () {
             porcentajeApagados = (datosPorNombre[nombre].apagados / total) * 100;
     
             datasets2.push({
-                label: `Encendidos (${nombre})`,
+                label: `Arreglar (${nombre})`,
                 data: [porcentajeEncendidos],
                 backgroundColor: 'rgba(236, 47, 230, 0.538)',
                 borderColor: 'rgba(236, 47, 230, 0.538)',
@@ -138,7 +138,7 @@ $(document).ready(function () {
             });
     
             datasets2.push({
-                label: `Apagados (${nombre})`,
+                label: `Arreglar (${nombre})`,
                 data: [porcentajeApagados],
                 backgroundColor: 'rgba(255, 166, 0, 0.577)',
                 borderColor: 'rgba(255, 166, 0, 0.577)',
@@ -159,7 +159,7 @@ $(document).ready(function () {
                     },
                     title: {
                         display: true,
-                        text: 'Encendido: ' + porcentajeEncendidos.toFixed(2) + '% y Apagado: ' + porcentajeApagados.toFixed(2) + '%',
+                        text: 'Arreglar ' + porcentajeEncendidos.toFixed(2) + '% y Arreglar ' + porcentajeApagados.toFixed(2) + '%',
                         padding: 10 // Ajusta el espacio entre el título y los porcentajes
                     }
                 }
