@@ -9,6 +9,9 @@ $(document).ready(function () {
     let myChart = null;  // Variable para almacenar la referencia al gráfico
     let myChart2 = null;  // Variable para almacenar la referencia al segundo gráfico
 
+    let mayores1000 = 0;
+    let menores1000 = 0;
+
     function cargarDatos(inicio, fin) {
         $.ajax({
             url: `php/get_infotablah32.php?inicio=${inicio}&fin=${fin}`,
@@ -24,6 +27,8 @@ $(document).ready(function () {
 
                     nombres = [];
                     datosPorNombre = {};
+                    mayores1000 = 0;
+                    menores1000 = 0;
 
                     data.forEach(function (registro) {
                         tablaRegistros.append(
@@ -44,19 +49,21 @@ $(document).ready(function () {
 
                         if (!datosPorNombre[nombre]) {
                             datosPorNombre[nombre] = {
-                                encendidos: 0,
-                                apagados: 0
+                                mayores1000: 0,
+                                menores1000: 0
                             };
                         }
 
-                        if (registro.estado === 1) {
-                            datosPorNombre[nombre].encendidos++;
+                        if (registro.estado > 1000) {
+                            mayores1000++;
                         } else {
-                            datosPorNombre[nombre].apagados++;
+                            menores1000++;
                         }
+
                     });
 
-                    console.log(datosPorNombre);
+                    console.log(`Mayores a 1000: ${mayores1000}`);
+                    console.log(`Menores a 1000: ${menores1000}`);
 
                     // Destruir los gráficos existentes antes de crear los nuevos
                     if (myChart) {
@@ -85,16 +92,16 @@ $(document).ready(function () {
 
         nombres.forEach(function (nombre) {
             datasets.push({
-                label: `Valor de: (${nombre})`,
-                data: [datosPorNombre[nombre].encendidos],
+                label: `Humo mayor a 1000`,
+                data: [mayores1000],
                 backgroundColor: 'rgba(236, 47, 230, 0.538)',
                 borderColor: 'rgba(236, 47, 230, 0.538)',
                 borderWidth: 1
             });
 
             datasets.push({
-                label: `Valor de: (${nombre})`,
-                data: [datosPorNombre[nombre].apagados],
+                label: `Humo menor a 1000`,
+                data: [menores1000],
                 backgroundColor: 'rgba(255, 166, 0, 0.577)',
                 borderColor: 'rgba(255, 166, 0, 0.577)',
                 borderWidth: 1
@@ -121,25 +128,27 @@ $(document).ready(function () {
         var ctx2 = document.getElementById('myChart2').getContext('2d');
         var datasets2 = [];
 
-        let porcentajeEncendidos = 0;
-        let porcentajeApagados = 0;
-    
+        let porcentajeMayores1000 = 0;
+        let porcentajeMenores1000 = 0;
+
         nombres.forEach(function (nombre) {
-            const total = datosPorNombre[nombre].encendidos + datosPorNombre[nombre].apagados;
-            porcentajeEncendidos = (datosPorNombre[nombre].encendidos / total) * 100;
-            porcentajeApagados = (datosPorNombre[nombre].apagados / total) * 100;
-    
+            const total = mayores1000 + menores1000;
+
+            // Calcular porcentajes
+            porcentajeMayores1000 = (mayores1000 / total) * 100;
+            porcentajeMenores1000 = (menores1000 / total) * 100;
+
             datasets2.push({
-                label: `Arreglar (${nombre})`,
-                data: [porcentajeEncendidos],
+                label: `Humo menor a 1000`,
+                data: [porcentajeMayores1000],
                 backgroundColor: 'rgba(236, 47, 230, 0.538)',
                 borderColor: 'rgba(236, 47, 230, 0.538)',
                 borderWidth: 1
             });
-    
+
             datasets2.push({
-                label: `Arreglar (${nombre})`,
-                data: [porcentajeApagados],
+                label: `Humo mayor a 1000`,
+                data: [porcentajeMenores1000],
                 backgroundColor: 'rgba(255, 166, 0, 0.577)',
                 borderColor: 'rgba(255, 166, 0, 0.577)',
                 borderWidth: 1
@@ -159,7 +168,7 @@ $(document).ready(function () {
                     },
                     title: {
                         display: true,
-                        text: 'Arreglar: ' + porcentajeEncendidos.toFixed(2) + '% y Arreglar: ' + porcentajeApagados.toFixed(2) + '%',
+                        text: 'Humo mayor a 1000: ' + porcentajeMayores1000.toFixed(0) + '% / Humo menor a 1000: ' + porcentajeMenores1000.toFixed(0) + '%',
                         padding: 10 // Ajusta el espacio entre el título y los porcentajes
                     }
                 }
@@ -167,7 +176,6 @@ $(document).ready(function () {
         });
     }
     
-
     cargarDatos($('#tipoDatos').val(), 0, filasPorPagina);
 
     setInterval(function () {
